@@ -1,5 +1,3 @@
-# Clickety Split | Leeloo-Micro
-
 ![Leeloo-Micro v1 Wireless](https://github.com/ClicketySplit/build-guides/blob/main/leeloo/images/gallery/Leeloo-Micro-v1-ZMK.jpg)
 
 ## Features
