@@ -2,12 +2,6 @@
 
 ![Leeloo-Micro v1 Wireless](https://github.com/ClicketySplit/build-guides/blob/main/leeloo/images/gallery/Leeloo-Micro-v1-ZMK.jpg)
 
-Keyboard Designer: [clicketysplit.ca](https://clicketysplit.ca)
-GitHub: [ClicketySplit](https://github.com/ClicketySplit)
-Hardware Supported: nice!nano v2, nice!view v1
-
-Leeloo-Micro is a 3x5x5m derivative of Leeloo v2; inheriting the column stagger and modifiers row, yet, reducing the number of switches by removing the top row and outside columns. With Leeloo-Micro's inaugural release being wireless, it leverages nice!nanos and nice!views for its microcontrollers and displays.
-
 ## Features
 
 - 3x5x5m Split Keyboard
@@ -82,10 +76,3 @@ Build commands for your custom keymap of Leeloo-Micro:
 west build -d build/left -p -b nice_nano_v2 -- -DSHIELD="leeloo_micro_rev2_left nice_view_adapter nice_view" -DZMK_CONFIG="/workspaces/zmk-config/[yourName]/leeloo_micro_v1.1/config"
 west build -d build/right -p -b nice_nano_v2 -- -DSHIELD="leeloo_micro_rev2_right nice_view_adapter nice_view" -DZMK_CONFIG="/workspaces/zmk-config/[yourName]/leeloo_micro_v1.1/config"
 ```
-
-# Support
-
-If you have any questions with regards to Leeloo-Micro, please [Contact Us](https://clicketysplit.ca/pages/contact-us).
-
-Clickety Split
-For the love of split keyboards.
