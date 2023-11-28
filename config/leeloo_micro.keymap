@@ -150,18 +150,18 @@ nice_view_spi: &spi0 {
         base_layer {
             label = " Pop!_OS";
             bindings = <
-//╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│  Q       │  W       │  E       │  R        │  T       │                         │  Y       │  U        │  I       │  O       │  P       │
-  &kp Q      &kp W      &kp E      &kp R       &kp T                                &kp Y      &kp U       &kp I      &kp O      &kp P
-//├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│  A       │  S       │  D       │  F        │  G       │                         │  H       │  J        │  K       │  L       │ ; :      │
-  &kp A      &kp S      &kp D      &kp F       &kp G                                &kp H      &kp J       &kp K      &kp L      &kp SEMI
-//├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│  Z       │  X       │  C       │  V        │  B       │          |   |          │  N       │  M        │ , <      │ . >      │ . ?      │
-  &kp Z      &kp X      &kp C      &kp V       &kp B      &lt 4 LGUI     &lt 4 DEL  &kp N      &kp M       &kp COMMA  &kp DOT    &kp FSLH
-//╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
-                        &kp LCTRL  &mt LALT ESC &mo 1     &kp LSHFT      &kp SPACE  &mo 2      &mt RCTRL RET &kp RALT
-//                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
+//╭──────────┬──────────┬──────────┬───────────┬───────────╮                           ╭───────────┬───────────┬──────────┬──────────┬──────────╮
+//│  Q       │  W       │  E       │  R        │  T        │                           │  Y        │  U        │  I       │  O       │  P       │
+  &kp Q      &kp W      &kp E      &kp R       &kp T                                   &kp Y       &kp U       &kp I      &kp O      &kp P
+//├──────────┼──────────┼──────────┼───────────┼───────────┤                           ├───────────┼───────────┼──────────┼──────────┼──────────┤
+//│  A       │  S       │  D       │  F        │  G        │                           │  H        │  J        │  K       │  L       │ ; :      │
+  &kp A      &kp S      &kp D      &kp F       &kp G                                   &kp H       &kp J       &kp K      &kp L      &kp SEMI
+//├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
+//│  Z       │  X       │  C       │  V        │  B        │           |   |           │  N        │  M        │ , <      │ . >      │ / ?      │
+  &kp Z      &kp X      &kp C      &kp V       &kp B       &lt 4 LGUI      &lt 4 DEL   &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
+//╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
+                        &kp LCTRL  &mt LALT ESC &mo 1      &mt LSHFT SPACE &mt RSHIFT SPACE &mo 2  &mt RALT RET &kp RCTRL
+//                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp DOWN UP>;
@@ -171,14 +171,14 @@ nice_view_spi: &spi0 {
             label = " Lower";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│  Q       │  W       │  E       │  R        │  T       │                         │  Y       │  U        │  I       │  O       │  P       │
-  &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7     &kp N8     &kp N9     &kp N0
+//│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
+  &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│  A       │  S       │  D       │  F        │  G       │                         │  H       │  J        │  K       │  L       │ ; :      │
-  &tdx_LRA   &tdw_LRP   &tdx_LRB   &tdx_LRR    &trans                               &trans     &trans      &trans     &trans     &kp QUOT
+//│          │ - _      │  LPAR    │  LBKT     │  LBRC    │                         │  RBRC    │  RBKT     │  RPAR    │ = +      │          │
+  &trans     &kp MINUS  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp EQUAL  &trans
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│  Z       │  X       │  C       │  V        │  B       │          |   |          │  N       │  M        │ , <      │ . >      │ . ?      │
-  &kp LSHFT  &trans     &trans     &trans      &trans     &trans         &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp RSHFT
+//│          │          │          │           │          │          |   |          │          │           │          │          │ \ |      │
+  &trans     &trans     &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans     &trans     &kp BSLH
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
@@ -190,10 +190,18 @@ nice_view_spi: &spi0 {
         raise_layer {
             label = " Raise";
             bindings = <
-&kp TAB    &trans     &trans     &kp WIN_SC &trans                           &kp PG_UP  &kp HOME   &kp UP     &kp END    &kp BSLH
-&kp CAPS   &trans     &trans     &trans     &trans                           &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT  &kp GRAVE
-&trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &mt RSFT TILDE
-                      &trans     &trans     &trans     &trans     &trans     &trans     &kp DEL    &trans
+//╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
+//│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
+  &kp TAB    &trans     &trans     &kp WIN_SC  &trans                               &kp PG_UP  &kp HOME    &kp UP     &kp END    &kp BSLH
+//├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
+//│          │ - _      │  LPAR    │  LBKT     │  LBRC    │                         │  RBRC    │  RBKT     │  RPAR    │ = +      │          │
+  &kp CAPS   &trans     &trans     &trans      &trans                               &kp PG_DN  &kp LEFT    &kp DOWN   &kp RIGHT  &kp GRAVE
+//├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
+//│          │          │          │           │          │          |   |          │          │           │          │          │          │
+  &trans     &trans     &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans     &trans     &trans
+//╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
+                        &trans     &trans     &trans     &trans     &trans     &trans     &kp DEL    &trans
+//                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
