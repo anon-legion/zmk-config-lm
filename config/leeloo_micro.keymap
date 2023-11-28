@@ -29,9 +29,9 @@
 
 #define BOOTLDR     &bootloader
 
-#define VOLUP   C_VOL_UP
-#define VOLDN   C_VOL_DN
-#define VOLMT   C_MUTE
+#define VUP   C_VOL_UP
+#define VDN   C_VOL_DN
+#define PP    C_PP
 
 #define RGBON   &rgb_ug RGB_ON
 #define RGBOFF  &rgb_ug RGB_OFF
@@ -44,6 +44,9 @@
 #define RGBBRD  &rgb_ug RGB_BRD
 #define RGBEFF  &rgb_ug RGB_EFF
 
+// Thumb row macros
+#define LTR(k32,k33,k34) &sk k32 &sht LALT k33  &mt LSHFT k34  
+#define RTR(k37,k38,k39) &mt RSHFT k37  &sht RALT k38  &sk k39
 
 /*
  * Assign the cs-gpios pin to 4.
@@ -99,19 +102,6 @@ nice_view_spi: &spi0 {
     };
 
     macros {
-        enDSH_W: en_Dash {
-            label = "enDSH_W";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <20>;
-            tap-ms = <20>;
-            bindings
-                = <&macro_press   &kp LALT>
-                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N5 &kp KP_N0>
-                , <&macro_release &kp LALT>
-                ;
-        };
-
         emDSH_W: em_Dash {
             label = "emDSH_W";
             compatible = "zmk,behavior-macro";
@@ -127,20 +117,14 @@ nice_view_spi: &spi0 {
     };
 
     behaviors {
-        tdw_Q: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "WIN_QUIT";
-            #binding-cells = <0>;
+        sht: sticky_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Sticky_Hold_Tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp Q>, <&kp LA(F4)>;
-        };
-
-        tdw_LRP: tap_dance_2 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "WIN_LRPAR";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LPAR>, <&kp RPAR>;
+            quick-tap-ms = <200>;
+            bindings = <&sk>, <&kp>;
         };
     };
 
@@ -151,16 +135,16 @@ nice_view_spi: &spi0 {
             label = " Pop!_OS";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬───────────╮                           ╭───────────┬───────────┬──────────┬──────────┬──────────╮
-//│  Q       │  W       │  E       │  R        │  T        │                           │  Y        │  U        │  I       │  O       │  P       │
+//│   Q      │   W      │   E      │   R       │   T       │                           │   Y       │   U       │   I      │   O      │   P      │
   &kp Q      &kp W      &kp E      &kp R       &kp T                                   &kp Y       &kp U       &kp I      &kp O      &kp P
 //├──────────┼──────────┼──────────┼───────────┼───────────┤                           ├───────────┼───────────┼──────────┼──────────┼──────────┤
-//│  A       │  S       │  D       │  F        │  G        │                           │  H        │  J        │  K       │  L       │ ; :      │
+//│   A      │   S      │   D      │   F       │   G       │                           │   H       │   J       │   K      │   L      │ ; :      │
   &kp A      &kp S      &kp D      &kp F       &kp G                                   &kp H       &kp J       &kp K      &kp L      &kp SEMI
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
-//│  Z       │  X       │  C       │  V        │  B        │           |   |           │  N        │  M        │ , <      │ . >      │ / ?      │
+//│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
   &kp Z      &kp X      &kp C      &kp V       &kp B       &lt 4 LGUI      &lt 4 DEL   &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
-                        &kp LCTRL  &mt LALT ESC &mo 1      &mt LSHFT SPACE &mt RSHIFT SPACE &mo 2  &mt RALT RET &kp RCTRL
+                        LTR(LCTRL,    ESC,        SPACE)   &mo 1           &mo 2       RTR(SPACE,     RET,        RCTRL)
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
@@ -174,7 +158,7 @@ nice_view_spi: &spi0 {
 //│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
   &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │ - _      │  LPAR    │  LBKT     │  LBRC    │                         │  RBRC    │  RBKT     │  RPAR    │ = +      │          │
+//│          │ - _      │   LPAR   │   LBKT    │   LBRC   │                         │   RBRC   │   RBKT    │   RPAR   │ = +      │          │
   &trans     &kp MINUS  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp EQUAL  &trans
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │          │          │           │          │          |   |          │          │           │          │          │ \ |      │
@@ -191,16 +175,16 @@ nice_view_spi: &spi0 {
             label = " Raise";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
-  &kp TAB    &trans     &trans     &kp WIN_SC  &trans                               &kp PG_UP  &kp HOME    &kp UP     &kp END    &kp BSLH
+//│   F9     |   F10    |   F11    |   F12     |          │                         │   HOME   │  PG DOWN  │   PG UP  │   END    │   CAPS   │
+  &kp F9     &kp F10    &kp F11    &kp F12     &kp VUP                              &kp HOME   &kp PG_DN   &kp PG_UP  &kp END    &kp CAPS
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │ - _      │  LPAR    │  LBKT     │  LBRC    │                         │  RBRC    │  RBKT     │  RPAR    │ = +      │          │
-  &kp CAPS   &trans     &trans     &trans      &trans                               &kp PG_DN  &kp LEFT    &kp DOWN   &kp RIGHT  &kp GRAVE
+//│   F5     │   F6     │   F7     │   F8      │          │                         │  <-      │  ⬇        │  ⬆       │   ->     │   PSCRN  │
+  &kp F5     &kp F6     &kp F7     &kp F8      &kp PP                               &kp LEFT   &kp DOWN    &kp UP     &kp RIGHT  &kp PSCRN
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │          │          │           │          │          |   |          │          │           │          │          │          │
-  &trans     &trans     &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans     &trans     &trans
+//│   F1     │   F2     │   F3     │   F4      │          │          |   |          │          │           │          │          │          │
+  &kp F1     &kp F2     &kp F3     &kp F4      &kp VDN    &trans         &trans     &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
-                        &trans     &trans     &trans     &trans     &trans     &trans     &kp DEL    &trans
+                        &trans     &trans      &trans     &trans         &trans     &trans     &kp DEL     &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
             >;
 
@@ -211,9 +195,9 @@ nice_view_spi: &spi0 {
             label = " Tri";
             bindings = <
 
-&kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &trans     &trans     &kp VOLUP  &trans     &trans
-&kp F6     &kp F7     &kp F8     &kp F9     &kp F10                          &trans     &trans     &kp VOLDN  &trans     &trans
-&kp F11    &kp F12    &trans     &trans     &trans     &trans     &trans     &trans     &kp VOLMT  &trans     &trans     &trans
+&kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &trans     &trans     &kp VUP  &trans     &trans
+&kp F6 VDN  &kp F7     &kp F8     &kp F9     &kp F10                          &trans     &trans     &kp VOLDN  &trans     &trans
+&kp F11 PPk p F12    &trans     &trans     &trans     &trans     &trans     &trans     &kp VOLMT  &trans     &trans     &trans
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &tog QX_M
             >;
 
