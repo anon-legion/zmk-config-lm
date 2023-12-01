@@ -192,7 +192,7 @@ nice_view_spi: &spi0 {
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│          |          |          |           |          │                         │          │           │          │          │          │
-  BOOTLDR    &sys_reset &tans      &tans       &tans                                &trans     &trans      &trans     &sys_reset BOOTLDR
+  BOOTLDR    &sys_reset &trans      &trans       &trans                                &trans     &trans      &trans     &sys_reset BOOTLDR
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
 //│   BT0    │   BT1    │   BT2    │   BT3     │   BT4    │                         │   BRI    │    SAI    │   HUI    │   EFF    │  RGBTOG  │
   &bt BT0    &bt BT1    &bt BT2    &bt BT3     &bt BT4                              RGBBRI     RGBSAI      RGBHUI     RGBEFF     RGBTOG
