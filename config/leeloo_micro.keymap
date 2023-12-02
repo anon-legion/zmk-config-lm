@@ -11,8 +11,8 @@
 
 // Layers
 #define ML    0       // Main
-#define LL    1       // Lower
-#define RL    2       // Raise
+#define LL    2       // Lower
+#define RL    1       // Raise
 #define TL    3       // Tri
 
 // Short versions
@@ -41,8 +41,8 @@
 
 
 // Thumb row macros
-#define LTR(k32,k33,k34) &sk k32 &sht LALT k33  &shs LSHFT k34
-#define RTR(k37,k38,k39) &shs RSHFT k37  &sht RALT k38  &sk k39
+#define LTR(k32,k33,k34) &sk k32 &sht LALT k33  &kp k34
+#define RTR(k37,k38,k39) &kp k37  &sht RALT k38  &sk k39
 
 /*
  * Assign the cs-gpios pin to 4.
@@ -117,9 +117,9 @@ nice_view_spi: &spi0 {
             compatible = "zmk,behavior-hold-tap";
             label = "Shift_Space";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             tapping-term-ms = <180>;
-            quick-tap-ms = <180>;
+            //quick-tap-ms = <180>;
             require-prior-idle-ms = <85>;
             bindings = <&kp>, <&kp>;
         };
@@ -151,15 +151,15 @@ nice_view_spi: &spi0 {
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
   &kp Z      &kp X      &kp C      &kp V       &kp B       &kp LGUI        &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
-                        LTR(LCTRL,    ESC,        SPACE)   &mo LL          &mo RL      RTR(SPACE,     RET,        RCTRL)
+                        LTR(LCTRL,    ESC,        LSHFT)   &mo LL          &mo RL      RTR(SPACE,     RET,        RCTRL)
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp DOWN UP>;
         };
 //layer 1 (LL)
-        lower_layer {
-            label = " Lower";
+        raise_layer {
+            label = " Raise";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
@@ -178,8 +178,8 @@ nice_view_spi: &spi0 {
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp RIGHT LEFT>;
         };
 //layer 2 (RL)
-        raise_layer {
-            label = " Raise";
+        lower_layer {
+            label = " Lower";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│   F9     |   F10    |   F11    |   F12     |          │                         │   HOME   │  PG DOWN  │   PG UP  │   END    │   CAPS   │
