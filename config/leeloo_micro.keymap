@@ -41,8 +41,8 @@
 
 
 // Thumb row macros
-#define LTR(k32,k33,k34) &sk k32 &sht LALT k33  &mt LSHFT k34  
-#define RTR(k37,k38,k39) &mt RSHFT k37  &sht RALT k38  &sk k39
+#define LTR(k32,k33,k34) &sk k32 &sht LALT k33  &shs LSHFT k34
+#define RTR(k37,k38,k39) &shs RSHFT k37  &sht RALT k38  &sk k39
 
 /*
  * Assign the cs-gpios pin to 4.
@@ -113,6 +113,17 @@ nice_view_spi: &spi0 {
     };
 
     behaviors {
+        shs: shift_space {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Shift_Space";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <180>;
+            quick-tap-ms = <180>;
+            require-prior-idle-ms = <125>;
+            bindings = <&kp>, <&kp>;
+        };
+        
         sht: sticky_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "Sticky_Hold_Tap";
@@ -122,11 +133,6 @@ nice_view_spi: &spi0 {
             quick-tap-ms = <200>;
             bindings = <&sk>, <&kp>;
         };
-      
-        &mt {
-            tapping-term-ms = <100>;
-        };
-
     };
 
     keymap {
