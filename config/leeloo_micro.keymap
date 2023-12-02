@@ -120,7 +120,7 @@ nice_view_spi: &spi0 {
             flavor = "tap-preferred";
             tapping-term-ms = <180>;
             quick-tap-ms = <180>;
-            require-prior-idle-ms = <110>;
+            require-prior-idle-ms = <95>;
             bindings = <&kp>, <&kp>;
         };
         
