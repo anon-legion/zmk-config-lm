@@ -125,7 +125,7 @@ nice_view_spi: &spi0 {
     };
 
     &mt {
-      tapping-term-ms = <100>
+      tapping-term-ms = <100>;
     };
 
     keymap {
