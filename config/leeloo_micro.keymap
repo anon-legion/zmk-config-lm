@@ -112,6 +112,10 @@ nice_view_spi: &spi0 {
         };
     };
 
+    &mt {
+        tapping-term-ms = <100>;
+    };
+
     behaviors {
         sht: sticky_hold_tap {
             compatible = "zmk,behavior-hold-tap";
@@ -122,10 +126,6 @@ nice_view_spi: &spi0 {
             quick-tap-ms = <200>;
             bindings = <&sk>, <&kp>;
         };
-    };
-
-    &mt {
-      tapping-term-ms = <100>;
     };
 
     keymap {
