@@ -138,7 +138,7 @@ nice_view_spi: &spi0 {
 
     keymap {
         compatible = "zmk,keymap";
-//layer 0
+//layer 0 (ML)
         base_layer {
             label = " Pop!_OS";
             bindings = <
@@ -190,7 +190,7 @@ nice_view_spi: &spi0 {
   &kp GRAVE  &kp UNDER  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp PLUS   &kp SQT
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │          │          │           │          │          |   |          │          │           │          │          │          │
-  &kp trans  &kp trans  &kp trans  &kp trans   &trans     &trans         &trans     &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
+  &trans     &trans     &trans     &trans      &trans     &trans         &trans     &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &kp DEL     &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
