@@ -186,8 +186,8 @@ nice_view_spi: &spi0 {
 //│   !      |   @      |   #      |   $       |   %      │                         │   ^      │   &       │   *      │   LPAR   │   BSPC   │
   &kp EXCL   &kp AT     &kp POUND  &kp DLLR    &kp PRCNT                            &kp CARET  &kp AMPS    &kp ASTRK  &kp LPAR   &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│  GRAVE   │   _      │   LPAR   │   LBKT    │   LBRC   │                         │   RBRC   │   RBKT    │   RPAR   │   +      │   SQT    │
-  &GRAVE     &kp UNDER  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp PLUS   &kp SQT
+//│   GRAVE  │   _      │   LPAR   │   LBKT    │   LBRC   │                         │   RBRC   │   RBKT    │   RPAR   │   +      │   SQT    │
+  &kp GRAVE  &kp UNDER  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp PLUS   &kp SQT
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│   F1     │   F2     │   F3     │   F4      │          │          |   |          │          │           │          │          │          │
   &kp trans  &kp trans  &kp trans  &kp trans   &trans     &trans         &trans     &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
