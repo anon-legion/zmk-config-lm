@@ -153,14 +153,14 @@ nice_view_spi: &spi0 {
             label = " Lower";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
-  &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
-//├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │   LBKT   │   LBRC   │   LPAR    │  - _     │                         │  = +     │   RPAR    │   RBRC   │   RBKT   │          │
   &trans     &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS                            &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &trans
+//├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
+//│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
+  &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │          │          │           │          │          |   |          │          │           │          │          │ \ |      │
-  &trans     &trans     &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans     &trans     &kp BSLH
+//│          │   LBKT   │   LBRC   │   LPAR    │  - _     │          |   |          │  = +     │   RPAR    │   RBRC   │   RBKT   │ \ |      │
+  &trans     &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS  &trans         &trans     &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &kp BSLH
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
@@ -173,14 +173,14 @@ nice_view_spi: &spi0 {
             label = " Raise";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│   !      |   @      |   #      |   $       |   %      │                         │   ^      │   &       │   *      │   BSLH   │   BSPC   │
-  &kp EXCL   &kp AT     &kp POUND  &kp DLLR    &kp PRCNT                            &kp CARET  &kp AMPS    &kp ASTRK  &kp BSLH   &kp BSPC
+//│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │   _      │                         │   +      │   RPAR    │   RBRC   │   RBKT   │   BSPC   │
+  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp UNDER                            &kp PLUS   &kp RPAR    &kp RBRC   &kp RBKT   &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │   _      │                         │   +      │   RPAR    │   RBRC   │   RBKT   │   SQT    │
-  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp UNDER                            &kp PLUS   &kp RPAR    &kp RBRC   &kp RBKT   &kp SQT
+//│   !      |   @      |   #      |   $       |   %      │                         │   ^      │   &       │   *      │   BSLH   │   SQT    │
+  &kp EXCL   &kp AT     &kp POUND  &kp DLLR    &kp PRCNT                            &kp CARET  &kp AMPS    &kp ASTRK  &kp BSLH   &kp SQT
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │          │          │           │          │          |   |          │          │           │          │          │          │
-  &trans     &trans     &trans     &trans      &trans     &trans         &trans     &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
+//│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │   _      │          |   |          │   +      │   RPAR    │   RBRC   │   RBKT   │          │
+  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp UNDER  &trans         &trans     &kp PLUS   &kp RPAR    &kp RBRC   &kp RBKT   &trans
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &kp DEL     &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
