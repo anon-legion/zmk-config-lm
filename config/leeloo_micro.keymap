@@ -42,8 +42,8 @@
 
 
 // Thumb row macros
-#define LTR(k32,k33,k34) &sk k32 &sht LALT k33
-#define RTR(k37,k38,k39) &sht RALT k38  &sk k39
+#define LTR(k32,k33) &sk k32 &sht LALT k33
+#define RTR(k38,k39) &sht RALT k38  &sk k39
 
 /*
  * Assign the cs-gpios pin to 4.
