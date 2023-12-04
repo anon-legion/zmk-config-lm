@@ -42,8 +42,8 @@
 
 
 // Thumb row macros
-#define LTR(k32,k33) &sk k32 &sht LALT k33
-#define RTR(k38,k39) &sht RALT k38  &sk k39
+#define LTR(k33) &sht LALT k33
+#define RTR(k38) &sht RALT k38
 
 /*
  * Assign the cs-gpios pin to 4.
@@ -118,7 +118,7 @@ nice_view_spi: &spi0 {
             compatible = "zmk,behavior-hold-tap";
             label = "Sticky_Hold_Tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
+            flavor = "tap-preferred";
             tapping-term-ms = <180>;
             quick-tap-ms = <180>;
             require-prior-idle-ms = <135>;
@@ -142,7 +142,7 @@ nice_view_spi: &spi0 {
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
   &kp Z      &kp X      &kp C      &kp V       &kp B       &lt FL LGUI     &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
-                        LTR(LCTRL,    ESC)     &mo LL      &kp LSHFT       &kp SPACE   &mo RL      RTR(RET,    RCTRL)
+                        &sk LCTRL  &mo LL      &kp LSHFT   LTR(ESC)        RTR(RET)    &kp SPACE   &mo RL      &sk RCTRL
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
