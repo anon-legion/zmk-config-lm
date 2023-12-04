@@ -156,8 +156,8 @@ nice_view_spi: &spi0 {
 //│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
   &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │ - _      │   LPAR   │   LBKT    │   LBRC   │                         │   RBRC   │   RBKT    │   RPAR   │ = +      │          │
-  &trans     &kp MINUS  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp EQUAL  &trans
+//│          │   LBKT   │   LBRC   │   LPAR    │  - _     │                         │  = +     │   RPAR    │   RBRC   │   RBKT   │          │
+  &trans     &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS                            &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &trans
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │          │          │           │          │          |   |          │          │           │          │          │ \ |      │
   &trans     &trans     &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans     &trans     &kp BSLH
@@ -176,8 +176,8 @@ nice_view_spi: &spi0 {
 //│   !      |   @      |   #      |   $       |   %      │                         │   ^      │   &       │   *      │   BSLH   │   BSPC   │
   &kp EXCL   &kp AT     &kp POUND  &kp DLLR    &kp PRCNT                            &kp CARET  &kp AMPS    &kp ASTRK  &kp BSLH   &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│   GRAVE  │   _      │   LPAR   │   LBKT    │   LBRC   │                         │   RBRC   │   RBKT    │   RPAR   │   +      │   SQT    │
-  &kp GRAVE  &kp UNDER  &kp LPAR   &kp LBKT    &kp LBRC                             &kp RBRC   &kp RBKT    &kp RPAR   &kp PLUS   &kp SQT
+//│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │  - _     │                         │  = +     │   RPAR    │   RBRC   │   RBKT   │   SQT    │
+  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS                            &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &kp SQT
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │          │          │           │          │          |   |          │          │           │          │          │          │
   &trans     &trans     &trans     &trans      &trans     &trans         &trans     &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
@@ -214,7 +214,7 @@ nice_view_spi: &spi0 {
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│          |          |          |           |          │                         │          │           │          │          │          │
-  BOOTLDR    &sys_reset &trans      &trans       &trans                                &trans     &trans      &trans     &sys_reset BOOTLDR
+  BOOTLDR    &sys_reset &trans     &trans      &trans                               &trans     &trans      &trans     &sys_reset BOOTLDR
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
 //│   BT0    │   BT1    │   BT2    │   BT3     │   BT4    │                         │   BRI    │    SAI    │   HUI    │   EFF    │  RGBTOG  │
   &bt BT0    &bt BT1    &bt BT2    &bt BT3     &bt BT4                              RGBBRI     RGBSAI      RGBHUI     RGBEFF     RGBTOG
