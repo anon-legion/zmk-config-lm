@@ -128,14 +128,14 @@ nice_view_spi: &spi0 {
             bindings = <&sk>, <&kp>;
         };
         
-        td_lgui: tap_dance_lgui {
+        td0: tap_dance_lgui {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings = <&kp LGUI>, <&mo FL>;
         };
 
-        td_lshift: tap_dance_left_shift {
+        td1: tap_dance_left_shift {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -157,9 +157,9 @@ nice_view_spi: &spi0 {
   &kp A      &kp S      &kp D      &kp F       &kp G                                   &kp H       &kp J       &kp K      &kp L      &kp SEMI
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
-  &kp Z      &kp X      &kp C      &kp V       &kp B       &td_lgui        &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
+  &kp Z      &kp X      &kp C      &kp V       &kp B       &td0            &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
-                        &sk LCTRL  &mo LL      &td_lshift  LTR(ESC)        RTR(RET)    &kp SPACE   &mo RL      &sk RCTRL
+                        &sk LCTRL  &mo LL      &td1        LTR(ESC)        RTR(RET)    &kp SPACE   &mo RL      &sk RCTRL
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
