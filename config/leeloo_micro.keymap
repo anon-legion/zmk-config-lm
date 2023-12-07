@@ -38,7 +38,7 @@
 #define RGBBRD  &rgb_ug RGB_BRD
 #define RGBEFF  &rgb_ug RGB_EFF
 #define RGBEFR  &rgb_ug RGB_EFR
-#define RGBCUS  &rgb_ug RGB_COLOR_HSB(308, 69, 46)
+#define RGBCUS  &rgb_ug RGB_COLOR_HSB(275, 100, 51)
 
 
 // Thumb row macros
@@ -71,21 +71,24 @@ nice_view_spi: &spi0 {
         compatible = "zmk,combos";
         combo_tab {
             timeout-ms = <50>;
+            require-prior-idle-ms = <110>;
             key-positions = <0 1>;
             //layers = <ML>;
             bindings = <&kp TAB>;
         };
         
-        combo_bspc {
-            timeout-ms = <50>;
-            key-positions = <9 8>;
-            //layers = <ML>;
-            bindings = <&kp BSPC>;
-        };
+        //combo_bspc {
+        //    timeout-ms = <50>;
+        //    require-prior-idle-ms = <110>;
+        //    key-positions = <9 8>;
+        //    //layers = <ML>;
+        //    bindings = <&kp BSPC>;
+        //};
          
         combo_grave {
             timeout-ms = <50>;
-            key-positions = <10 11>;
+            require-prior-idle-ms = <110>;
+            key-positions = <20 21>;
             layers = <ML>;
             bindings = <&kp GRAVE>;
         };
@@ -124,6 +127,20 @@ nice_view_spi: &spi0 {
             require-prior-idle-ms = <135>;
             bindings = <&sk>, <&kp>;
         };
+        
+        td_lgui: tap_dance_lgui {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp LGUI>, <&mo FL>;
+        };
+
+        td_lshift: tap_dance_left_shift {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHFT>, <&kp CAPS>;
+        };
     };
 
     keymap {
@@ -140,9 +157,9 @@ nice_view_spi: &spi0 {
   &kp A      &kp S      &kp D      &kp F       &kp G                                   &kp H       &kp J       &kp K      &kp L      &kp SEMI
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
-  &kp Z      &kp X      &kp C      &kp V       &kp B       &lt FL LGUI     &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
+  &kp Z      &kp X      &kp C      &kp V       &kp B       &td_lgui        &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
-                        &sk LCTRL  &mo LL      &kp LSHFT   LTR(ESC)        RTR(RET)    &kp SPACE   &mo RL      &sk RCTRL
+                        &sk LCTRL  &mo LL      &td_lshift  LTR(ESC)        RTR(RET)    &kp SPACE   &mo RL      &sk RCTRL
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
@@ -153,14 +170,14 @@ nice_view_spi: &spi0 {
             label = " Lower";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│          │   LBKT   │   LBRC   │   LPAR    │  - _     │                         │  = +     │   RPAR    │   RBRC   │   RBKT   │          │
-  &trans     &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS                            &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &trans
+//│          │   LBKT   │   LBRC   │   LPAR    │  - _     │                         │  = +     │   RPAR    │   RBRC   │   RBKT   │   BSPC   │
+  &trans     &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS                            &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
 //│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
   &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │   LBKT   │   LBRC   │   LPAR    │  - _     │          |   |          │  = +     │   RPAR    │   RBRC   │   RBKT   │ \ |      │
-  &trans     &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS  &trans         &trans     &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &kp BSLH
+  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS  &trans         &trans     &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &kp BSLH
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
