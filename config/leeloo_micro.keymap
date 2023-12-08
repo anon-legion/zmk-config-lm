@@ -212,8 +212,8 @@ nice_view_spi: &spi0 {
             label = " Tri";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
-//│   F9     |   F10    |   F11    |   F12     |          │                         │   HOME   │  PG DOWN  │   PG UP  │   END    │   CAPS   │
-  &kp F9     &kp F10    &kp F11    &kp F12     &kp VUP                              &kp HOME   &kp PG_DN   &kp PG_UP  &kp END    &kp CAPS
+//│   F9     |   F10    |   F11    |   F12     |          │                         │   HOME   │  PG DOWN  │   PG UP  │   END    │   BSPC   │
+  &kp F9     &kp F10    &kp F11    &kp F12     &kp VUP                              &kp HOME   &kp PG_DN   &kp PG_UP  &kp END    &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
 //│   F5     │   F6     │   F7     │   F8      │          │                         │  <-      │  ⬇        │  ⬆       │   ->     │   PSCRN  │
   &kp F5     &kp F6     &kp F7     &kp F8      &kp PP                               &kp LEFT   &kp DOWN    &kp UP     &kp RIGHT  &kp PSCRN
