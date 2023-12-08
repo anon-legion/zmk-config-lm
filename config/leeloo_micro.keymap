@@ -132,7 +132,7 @@ nice_view_spi: &spi0 {
             compatible = "zmk,behavior-tap-dance";
             label = "FIRMWARE";
             #binding-cells = <0>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             bindings = <&kp LGUI>, <&mo FL>;
         };
 
