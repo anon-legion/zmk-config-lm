@@ -143,6 +143,22 @@ nice_view_spi: &spi0 {
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp CAPS>;
         };
+        
+        td_ll: tab_dance_lower_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LOWER_LAYER";
+            #binding-cells = <0>;
+            tapping-term-ms = <190>;
+            bindings = <&mo LL>, <&sl LL>;
+        }
+        
+        td_rl: tab_dance_raise_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RAISE_LAYER";
+            #binding-cells = <0>;
+            tapping-term-ms = <190>;
+            bindings = <&mo RL>, <&sl RL>;
+        }
     };
 
     keymap {
@@ -159,9 +175,9 @@ nice_view_spi: &spi0 {
   &kp A      &kp S      &kp D      &kp F       &kp G                                   &kp H       &kp J       &kp K      &kp L      &kp SEMI
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
-  &kp Z      &kp X      &kp C      &kp V       &kp B       &kp DEL         &td_lgui    &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
+  &kp Z      &kp X      &kp C      &kp V       &kp B       &td_lgui        &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    &kp FSLH
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
-                        &sk LCTRL  &mo LL      &td_lshft   LTR(ESC)        RTR(RET)    &kp SPACE   &mo RL      &sk RCTRL
+                        &sk LCTRL  &td_ll      &td_lshft   LTR(ESC)        RTR(RET)    &kp SPACE   &td_rl      &sk RCTRL
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
 
@@ -178,7 +194,7 @@ nice_view_spi: &spi0 {
 //│ 1 !      │ 2 @      │ 3 #      │ 4 $       │ 5 %      │                         │ 6 ^      │ 7 &       │ 8 *      │ 9 LPAR   │ 0 RPAR   │
   &kp N1     &kp N2     &kp N3     &kp N4      &kp N5                               &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│          │   LBKT   │   LBRC   │   LPAR    │  - _     │          |   |          │  = +     │   RPAR    │   RBRC   │   RBKT   │ \ |      │
+//│          │   LBKT   │   LBRC   │   LPAR    │  - _     │          |   |          │  = +     │   RPAR    │   RBRC   │   RBKT   │  \ |     │
   &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp MINUS  &trans         &trans     &kp EQUAL  &kp RPAR    &kp RBRC   &kp RBKT   &kp BSLH
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
@@ -195,11 +211,11 @@ nice_view_spi: &spi0 {
 //│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │   _      │                         │   +      │   RPAR    │   RBRC   │   RBKT   │   BSPC   │
   &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp UNDER                            &kp PLUS   &kp RPAR    &kp RBRC   &kp RBKT   &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│   !      |   @      |   #      |   $       |   %      │                         │   ^      │   &       │   *      │   BSLH   │   SQT    │
+//│   !      |   @      |   #      |   $       |   %      │                         │   ^      │   &       │   *      │  \ |     │   SQT    │
   &kp EXCL   &kp AT     &kp POUND  &kp DLLR    &kp PRCNT                            &kp CARET  &kp AMPS    &kp ASTRK  &kp BSLH   &kp SQT
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
-//│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │   _      │          |   |          │   +      │   RPAR    │   RBRC   │   RBKT   │          │
-  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp UNDER  &trans         &trans     &kp PLUS   &kp RPAR    &kp RBRC   &kp RBKT   &trans
+//│   GRAVE  │   LBKT   │   LBRC   │   LPAR    │   _      │          |   |          │   +      │   RPAR    │   RBRC   │   RBKT   │  \ |     │
+  &kp GRAVE  &kp LBKT   &kp LBRC   &kp LPAR    &kp UNDER  &trans         &trans     &kp PLUS   &kp RPAR    &kp RBRC   &kp RBKT   &kp BSLH
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &kp DEL     &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
