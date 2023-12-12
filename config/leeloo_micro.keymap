@@ -150,7 +150,7 @@ nice_view_spi: &spi0 {
             #binding-cells = <0>;
             tapping-term-ms = <190>;
             bindings = <&mo LL>, <&sl LL>;
-        }
+        };
         
         td_rl: tab_dance_raise_layer {
             compatible = "zmk,behavior-tap-dance";
@@ -158,7 +158,7 @@ nice_view_spi: &spi0 {
             #binding-cells = <0>;
             tapping-term-ms = <190>;
             bindings = <&mo RL>, <&sl RL>;
-        }
+        };
     };
 
     keymap {
