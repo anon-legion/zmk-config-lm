@@ -63,8 +63,8 @@ nice_view_spi: &spi0 {
 
         combo_tab {
             timeout-ms = <50>;
-            require-prior-idle-ms = <110>;
-            key-positions = <10 11>;
+            require-prior-idle-ms = <120>;
+            key-positions = <20 21>;
             //layers = <ML>;
             bindings = <&kp TAB>;
         };
@@ -88,7 +88,6 @@ nice_view_spi: &spi0 {
     behaviors {
         sht: sticky_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "Sticky_Hold_Tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <180>;
@@ -99,15 +98,13 @@ nice_view_spi: &spi0 {
         
         td_lshft: tap_dance_left_shift {
             compatible = "zmk,behavior-tap-dance";
-            label = "CAPS_LOCK";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
             bindings = <&kp LSHFT>, <&kp CAPS>;
         };
         
         td_ll: tap_dance_lower_layer {
             compatible = "zmk,behavior-tap-dance";
-            label = "LOWER_LAYER";
             #binding-cells = <0>;
             tapping-term-ms = <180>;
             bindings = <&mo LL>, <&sl LL>;
@@ -115,7 +112,6 @@ nice_view_spi: &spi0 {
         
         td_rl: tap_dance_raise_layer {
             compatible = "zmk,behavior-tap-dance";
-            label = "RAISE_LAYER";
             #binding-cells = <0>;
             tapping-term-ms = <180>;
             bindings = <&mo RL>, <&sl RL>;
@@ -126,7 +122,7 @@ nice_view_spi: &spi0 {
         compatible = "zmk,keymap";
 //layer 0 (ML)
         base_layer {
-            label = " NixOS";
+            display-name = " NixOS";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬───────────╮                           ╭───────────┬───────────┬──────────┬──────────┬──────────╮
 //│   Q      │   W      │   E      │   R       │   T       │                           │   Y       │   U       │   I      │   O      │   P      │
@@ -144,7 +140,7 @@ nice_view_spi: &spi0 {
         };
 //layer 1 (LL)
         lower_layer {
-            label = " Lower";
+            display-name = " Lower";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│   F9     |   F10    |   F11    |   F12     |          │                         │   HOME   │  PG DOWN  │   PG UP  │   END    │   BSPC   │
@@ -162,7 +158,7 @@ nice_view_spi: &spi0 {
         };
 //layer 2 (RL)
         raise_layer {
-            label = " Raise";
+            display-name = " Raise";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│          │   LBKT   │   LBRC   │   LPAR    │   _      │                         │   +      │   RPAR    │   RBRC   │   RBKT   │   BSPC   │
@@ -180,7 +176,7 @@ nice_view_spi: &spi0 {
         };
 //layer 3 (TL)
         tri_layer {
-            label = " Tri";
+            display-name = " Tri";
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│          |          |          |           |          │                         │          │           │          │          │          │
