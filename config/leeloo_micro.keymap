@@ -39,10 +39,11 @@
 #define RGBEFR  &rgb_ug RGB_EFR
 #define RGBCUS  &rgb_ug RGB_COLOR_HSB(275, 100, 51)
 
-
-// Thumb row macros
+// Thumb macros
 #define LTR(k33) &sht LGUI k33
 #define RTR(k38) &sht RALT k38
+// Auto shift
+#define AS(K) &as LS(K) K
 
 nice_view_spi: &spi0 {
     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
@@ -64,7 +65,7 @@ nice_view_spi: &spi0 {
         combo_tab {
             timeout-ms = <30>;
             require-prior-idle-ms = <150>;
-            key-positions = <10 11>;
+            key-positions = <0 1>;
             layers = <ML>;
             bindings = <&kp TAB>;
         };
@@ -89,13 +90,21 @@ nice_view_spi: &spi0 {
         sht: sticky_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             tapping-term-ms = <180>;
-            //quick-tap-ms = <180>;
-            require-prior-idle-ms = <135>;
+            require-prior-idle-ms = <150>;
             bindings = <&sk>, <&kp>;
         };
-        
+
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <135>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
         td_lshft: tap_dance_left_shift {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
