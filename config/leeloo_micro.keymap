@@ -147,7 +147,6 @@ nice_view_spi: &spi0 {
                         &sk LCTRL  &td_ll      &td_lshft   LTR(ESC)        RTR(RET)    &kp SPACE   &td_rl      &sk RCTRL
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
           >;
-          sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp UP DOWN>;
         };
 //layer 1 (LL)
         lower_layer {
@@ -166,7 +165,6 @@ nice_view_spi: &spi0 {
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp UP DOWN>;
         };
 //layer 2 (RL)
         raise_layer {
@@ -185,7 +183,6 @@ nice_view_spi: &spi0 {
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp UP DOWN>;
         };
 //layer 3 (TL)
         tri_layer {
@@ -204,7 +201,6 @@ nice_view_spi: &spi0 {
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp UP DOWN>;
         };
     };
 };
