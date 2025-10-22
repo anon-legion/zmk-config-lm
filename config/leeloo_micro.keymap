@@ -41,7 +41,7 @@
 
 
 // Thumb row macros
-#define LTR(k33) &sht LALT k33
+#define LTR(k33) &sht LGUI k33
 #define RTR(k38) &sht RALT k38
 
 nice_view_spi: &spi0 {
