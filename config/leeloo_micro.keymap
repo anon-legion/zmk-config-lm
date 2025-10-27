@@ -46,8 +46,8 @@
 #define AS(K) &as LS(K) K
 
 // Home row
-#define LHR(K10 K11 K12 K13) &hml LGUI K10 &hml LCTRL K11 &hml LALT K12 &hml LSHFT K13
-#define RHR(K16 K17 K18 K19) &hmr RSHFT K16 &hmr RALT K17 &hmr RCTRL K18 &hmr RGUI K19
+#define LHR(K10,K11,K12,K13) &hml LGUI K10 &hml LCTRL K11 &hml LALT K12 &hml LSHFT K13
+#define RHR(K16,K17,K18,K19) &hmr RSHFT K16 &hmr RALT K17 &hmr RCTRL K18 &hmr RGUI K19
 
 nice_view_spi: &spi0 {
     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
@@ -130,7 +130,7 @@ nice_view_spi: &spi0 {
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 35>;
-            hold-trigger-on-releasej
+            hold-trigger-on-release;
         };
         
         td_lshft: tap_dance_left_shift {
@@ -166,7 +166,7 @@ nice_view_spi: &spi0 {
   &kp Q      &kp W      &kp E      &kp R       &kp T                                   &kp Y       &kp U       &kp I      &kp O      &kp P
 //├──────────┼──────────┼──────────┼───────────┼───────────┤                           ├───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   A      │   S      │   D      │   F       │   G       │                           │   H       │   J       │   K      │   L      │ ; :      │
-  LHR(A          S          D          F)      &kp G                                   &kp H       RHR(J           K          L       SEMI)
+  LHR(A,         S,         D,         F)      &kp G                                   &kp H       RHR(J,          K,         L,      SEMI)
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
   &kp Z      &kp X      &kp C      &kp V       &kp B       &kp LGUI        &kp DEL     &kp N       &kp M       AS(COMMA)  AS(DOT)    AS(FSLH)
