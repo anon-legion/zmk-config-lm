@@ -46,8 +46,8 @@
 #define AS(K) &as LS(K) K
 
 // Home row
-#define LHR(K10,K11,K12,K13) &hml LGUI K10 &hml LCTRL K11 &hml LALT K12 &hml LSHFT K13
-#define RHR(K16,K17,K18,K19) &hmr RSHFT K16 &hmr RALT K17 &hmr RCTRL K18 &hmr RGUI K19
+#define LHR(K11,K12,K13) &hml LCTRL K11 &hml LALT K12 &hml LSHFT K13
+#define RHR(K16,K17,K18) &hmr RSHFT K16 &hmr RALT K17 &hmr RCTRL K18
 
 nice_view_spi: &spi0 {
     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
@@ -98,6 +98,7 @@ nice_view_spi: &spi0 {
             require-prior-idle-ms = <150>;
             tapping-term-ms = <280>;
             bindings = <&sk>, <&kp>;
+            hold-trigger-on-release;
         };
 
         as: auto_shift {
@@ -166,7 +167,7 @@ nice_view_spi: &spi0 {
   &kp Q      &kp W      &kp E      &kp R       &kp T                                   &kp Y       &kp U       &kp I      &kp O      &kp P
 //├──────────┼──────────┼──────────┼───────────┼───────────┤                           ├───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   A      │   S      │   D      │   F       │   G       │                           │   H       │   J       │   K      │   L      │ ; :      │
-  LHR(A,         S,         D,         F)      &kp G                                   &kp H       RHR(J,          K,         L,      SEMI)
+  &kp A      LHR(S,         D,         F)      &kp G                                   &kp H       RHR(J,          K,         L)     AS(SEMI)
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
   &kp Z      &kp X      &kp C      &kp V       &kp B       &kp LGUI        &kp DEL     &kp N       &kp M       AS(COMMA)  AS(DOT)    AS(FSLH)
@@ -183,8 +184,8 @@ nice_view_spi: &spi0 {
 //│   F9     |   F10    |   F11    |   F12     |          │                         │   HOME   │  PG DOWN  │   PG UP  │   END    │   BSPC   │
   &kp F9     &kp F10    &kp F11    &kp F12     &kp VUP                              &kp HOME   &kp PG_DN   &kp PG_UP  &kp END    &kp BSPC
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
-//│   F5     │   F6     │   F7     │   F8      │          │                         │  <-      │  ⬇        │  ⬆       │   ->     │   PSCRN  │
-  &kp F5     &kp F6     &kp F7     &kp F8      &kp PP                               &kp LEFT   &kp DOWN    &kp UP     &kp RIGHT  &kp PSCRN
+//│   F5     │   F6     │   F7     │   F8      │          │                         │  <-      │  ⬇        │  ⬆       │   ->     │  PSCRN   │
+  &kp F5     &kp F6     &kp F7     &kp F8      &kp PP                               &kp LEFT   &kp DOWN    &kp UP     &kp RIGHT  AS(PSCRN)
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│   F1     │   F2     │   F3     │   F4      │          │   LSHFT  |   |   RALT   │          │           │          │          │          │
   &kp F1     &kp F2     &kp F3     &kp F4      &kp VDN    &sk LSHFT      &sk RALT   &kp C_PREV &kp C_STOP  &kp C_PLAY &kp C_NEXT &trans
@@ -217,13 +218,13 @@ nice_view_spi: &spi0 {
             bindings = <
 //╭──────────┬──────────┬──────────┬───────────┬──────────╮                         ╭──────────┬───────────┬──────────┬──────────┬──────────╮
 //│          |          |          |           |          │                         │          │           │          │          │          │
-  &bt BT0    &bt BT1    &bt BT2    &bt BT3     &bt BT4                              &bt BT0    &bt BT1    &bt BT2    &bt BT3     &bt BT4 
+  &bt BT0    &bt BT1    &bt BT2    &bt BT3     &bt BT4                              &bt BT0    &bt BT1    &bt BT2    &bt BT3     &bt BT4
 //├──────────┼──────────┼──────────┼───────────┼──────────┤                         ├──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │   LCTRL  │   LALT   │   LSHFT   │          │                         │          │   RSHFT   │   RALT   │   RCTRL  │          │
-  &trans     &sk LCTRL  &sk LALT   &sk LSHFT   &trans                               &trans     &sk RSHFT   &sk RALT   &sk RCTRL  RGBTOG 
+  &trans     &sk LCTRL  &sk LALT   &sk LSHFT   &trans                               &trans     &sk RSHFT   &sk RALT   &sk RCTRL  RGBTOG
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│   BT CLR │          │          │           │          │          |   |          │          │           │          │          │   BT_CLR │
-  &bt BT_CLR &trans     &trans     &trans      &trans     &trans         &bt BT_CLR &trans     &trans     &trans      &trans     &bt BT_CLR 
+  &bt BT_CLR &trans     &trans     &trans      &trans     &trans         &bt BT_CLR &trans     &trans     &trans      &trans     &bt BT_CLR
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
