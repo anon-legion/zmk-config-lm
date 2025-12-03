@@ -40,7 +40,7 @@
 #define RGBCUS  &rgb_ug RGB_COLOR_HSB(275, 100, 51)
 
 // Thumb macro
-#define TM(K) &sht LGUI K
+#define TM(K) &mt LGUI K
 
 // Auto shift
 #define AS(K) &as LS(K) K
@@ -91,13 +91,13 @@ nice_view_spi: &spi0 {
     };
 
     behaviors {
-        sht: sticky_hold_tap {
+        mt: mod_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
             require-prior-idle-ms = <150>;
             tapping-term-ms = <280>;
-            bindings = <&sk>, <&kp>;
+            bindings = <&kp>, <&kp>;
             hold-trigger-on-release;
         };
 
@@ -170,7 +170,7 @@ nice_view_spi: &spi0 {
   &kp A      LHR(S,         D,         F)      &kp G                                   &kp H       RHR(J,          K,         L)     AS(SEMI)
 //├──────────┼──────────┼──────────┼───────────┼───────────┼───────────╮   ╭───────────┼───────────┼───────────┼──────────┼──────────┼──────────┤
 //│   Z      │   X      │   C      │   V       │   B       │           |   |           │   N       │   M       │ , <      │ . >      │ / ?      │
-  &kp Z      &kp X      &kp C      &kp V       &kp B       &kp LGUI        &kp DEL     &kp N       &kp M       AS(COMMA)  AS(DOT)    AS(FSLH)
+  &kp Z      &kp X      &kp C      &kp V       &kp B       &kp LGUI        &kp DEL     &kp N       &kp M       &kp COMMA  &kp DOT    AS(FSLH)
 //╰──────────┴──────────┼──────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼──────────┼──────────┴──────────╯
                         &sk LCTRL  &td_ll      &td_lshft   TM(ESC)         TM(RET)     &kp SPACE   &td_rl      &sk RCTRL
 //                      ╰──────────┴───────────┴───────────┴───────────╯   ╰───────────┴───────────┴───────────┴──────────╯
@@ -206,7 +206,7 @@ nice_view_spi: &spi0 {
   AS(N1)     AS(N2)     AS(N3)     AS(N4)      AS(N5)                               AS(N6)     AS(N7)      AS(N8)     AS(N9)     AS(N0)
 //├──────────┼──────────┼──────────┼───────────┼──────────┼──────────╮   ╭──────────┼──────────┼───────────┼──────────┼──────────┼──────────┤
 //│          │          │          │           │  - _     │   LALT   |   |   RSHFT  │  = +     │           │          │   SQT    │  \ |     │
-  AS(GRAVE)  &trans     &trans     &trans      &kp MINUS  &sk LALT       &sk RSHFT  &kp EQUAL  &trans      &trans     AS(SQT)    AS(BSLH)
+  AS(GRAVE)  &trans     &trans     &trans      &kp MINUS  &sk LALT       &sk RSHFT  &kp EQUAL  &trans      &trans     &kp SQT    AS(BSLH)
 //╰──────────┴──────────┼──────────┼───────────┼──────────┼──────────┤   ├──────────┼──────────┼───────────┼──────────┼──────────┴──────────╯
                         &trans     &trans      &trans     &trans         &trans     &trans     &trans      &trans
 //                      ╰──────────┴───────────┴──────────┴──────────╯   ╰──────────┴──────────┴───────────┴──────────╯
