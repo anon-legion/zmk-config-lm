@@ -28,7 +28,7 @@
 #define VDN   C_VOL_DN
 #define PP    C_PP
 
-#define RGBTOG  &rgb_ug RGB_TOG
+#define RGBTOG  &rgb
 #define RGBHUI  &rgb_ug RGB_HUI
 #define RGBHUD  &rgb_ug RGB_HUD
 #define RGBSAI  &rgb_ug RGB_SAI
@@ -37,7 +37,7 @@
 #define RGBBRD  &rgb_ug RGB_BRD
 #define RGBEFF  &rgb_ug RGB_EFF
 #define RGBEFR  &rgb_ug RGB_EFR
-#define RGBCUS  &rgb_ug RGB_COLOR_HSB(275, 100, 51)
+#define RGBCUS  &rgb_ug RGB_COLOR_HSB(19, 98, 69)
 
 // Thumb macro
 #define TM(K) &mt LGUI K
@@ -153,6 +153,12 @@ nice_view_spi: &spi0 {
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings = <&mo RL>, <&sl RL>;
+        };
+
+        rgb: rgb_custom {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          bindings = <&rgb_ug RGB_TOG RGBCUS>;
         };
     };
 
