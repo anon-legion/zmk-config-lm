@@ -95,7 +95,7 @@ nice_view_spi: &spi0 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <120>;
             tapping-term-ms = <280>;
             bindings = <&kp>, <&kp>;
             hold-trigger-on-release;
